@@ -16,4 +16,4 @@ const Results = ({ results }) => {
     )
 };
 
-export default Contacts
+export default Results

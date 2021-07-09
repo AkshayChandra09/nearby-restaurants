@@ -1,5 +1,6 @@
 import React from 'react';
-import Results from './components/Results';
+import Search from './components/Search';
+// import Results from './components/Results';
 
 
 class App extends React.Component {
@@ -11,17 +12,16 @@ class App extends React.Component {
     currentLatitude: 0.00,
     currentLongitude: 0.00,
     searchQuery: '',
-    restaurants: [],
-    contacts: []
+    restaurants: []
   }
 
 
   // fix this part
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      console.log("Latitude is :", position.coords.latitude);
-      console.log("Longitude is :", position.coords.longitude);
-    });
+    // navigator.geolocation.getCurrentPosition(function (position) {
+    //   console.log("Latitude is :", position.coords.latitude);
+    //   console.log("Longitude is :", position.coords.longitude);
+    // });
 
     // const apiUrl = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=[AIzaSyBDUO5FgkAiT03CHEBMYQ75ZNF13ucAfyw]&location=-32.863708646699656,-96.95087568907348&radius=5000&type=restaurant'; 
     // fetch(apiUrl)
@@ -30,10 +30,10 @@ class App extends React.Component {
     //   .catch(console.log);
   }
 
-  handleQuery(query){
+  handleQuery = (query) => {
     debugger;
     console.log(query);
-    // this.setState({searchQuery: query}).bind(this);
+    this.setState({searchQuery: query});
   }
 
   render() {
@@ -44,6 +44,7 @@ class App extends React.Component {
           <Search onSearch={this.handleQuery} /><br />
           {/* <Results results={this.state.searchQuery} /> */}
           {/* <Map /> */}
+          <p>{this.state.searchQuery}</p>
         </div>
       </div>
     );

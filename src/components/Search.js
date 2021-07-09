@@ -19,20 +19,9 @@ export default class Search extends Component {
         });
     }
 
-
     handleSubmit(e) {
-        // validate user input for null
-        debugger;
-        alert('A name was submitted: ' + this.state.searchQuery);
         this.props.onSearch(this.state.searchQuery);
         e.preventDefault();
-    }
-
-    componentDidMount() {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            console.log("Latitude is :", position.coords.latitude);
-            console.log("Longitude is :", position.coords.longitude);
-        });
     }
 
     render() {
