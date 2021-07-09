@@ -41,7 +41,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="col-md-12">
-        <h1>Hello ..</h1>
+        <center><h1><i>Tengo Hambre..</i></h1></center>
         <div class="col-md-4">
           <Search onSearch={this.handleQuery} /><br />
           <Results results={this.state.restaurants} />
