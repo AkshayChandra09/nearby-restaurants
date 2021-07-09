@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Results from './components/Results';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  state = {
+    currentLatitude: 0.00,
+    currentLongitude: 0.00,
+    searchQuery: '',
+    restaurants: [],
+    contacts: []
+  }
+
+
+  // fix this part
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+    });
+
+    // const apiUrl = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=[AIzaSyBDUO5FgkAiT03CHEBMYQ75ZNF13ucAfyw]&location=-32.863708646699656,-96.95087568907348&radius=5000&type=restaurant'; 
+    // fetch(apiUrl)
+    //   .then(res => res.json())
+    //   .then((data) => console.log(data))
+    //   .catch(console.log);
+  }
+
+  handleQuery(query){
+    debugger;
+    console.log(query);
+    // this.setState({searchQuery: query}).bind(this);
+  }
+
+  render() {
+    return (
+      <div className="col-md-12">
+        <h1>Hello ..</h1>
+        <div class="col-md-4">
+          <Search onSearch={this.handleQuery} /><br />
+          {/* <Results results={this.state.searchQuery} /> */}
+          {/* <Map /> */}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
