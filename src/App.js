@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from './components/Search';
-// import Results from './components/Results';
+import Results from './components/Results';
 
 
 class App extends React.Component {
@@ -12,7 +12,11 @@ class App extends React.Component {
     currentLatitude: 0.00,
     currentLongitude: 0.00,
     searchQuery: '',
-    restaurants: []
+    restaurants: [
+      {name: 'Tikka Taco', address: 'Market placed Blvd', ratings: '4/5'},
+      {name: 'Inchin Bamboo Garden', address: 'Market placed Blvd', ratings: '4.5/5'},
+      {name: 'India 101', address: 'Market placed Blvd', ratings: '4/5'},
+    ]
   }
 
 
@@ -31,8 +35,6 @@ class App extends React.Component {
   }
 
   handleQuery = (query) => {
-    debugger;
-    console.log(query);
     this.setState({searchQuery: query});
   }
 
@@ -42,7 +44,7 @@ class App extends React.Component {
         <h1>Hello ..</h1>
         <div class="col-md-4">
           <Search onSearch={this.handleQuery} /><br />
-          {/* <Results results={this.state.searchQuery} /> */}
+          <Results results={this.state.restaurants} />
           {/* <Map /> */}
           <p>{this.state.searchQuery}</p>
         </div>
