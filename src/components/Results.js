@@ -6,13 +6,8 @@ export default class Results extends Component {
     }
 
     render() {
-        const restaurants = this.props.restaurants;
-
-        // optimize this logic later
-        if(restaurants == 'undefined'){
-            debugger;
-            return null;
-        }
+        debugger;
+        const restaurants = this.props.results;
 
         return (
             <div>
@@ -20,11 +15,9 @@ export default class Results extends Component {
                 {restaurants && restaurants.map((restaurant) => (
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">{restaurant.Name}</h5>
-                            <h6 className="card-subtitle mb-2 text-muted">{restaurant.Ratings}</h6>
-                            <p className="card-text">{restaurant.Type}</p>
-                            <p className="card-text">{restaurant.Address}</p>
-                            <p className="card-text">{restaurant.Hours}</p>
+                            <h5 className="card-title">{restaurant.name}</h5>
+                            <h6 className="card-subtitle mb-2 text-muted">{restaurant.rating}</h6>
+                            <p className="card-text">{restaurant.vicinity}</p>
                         </div>
                     </div>
                 ))
