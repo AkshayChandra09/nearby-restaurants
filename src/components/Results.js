@@ -12,7 +12,7 @@ export default class Results extends Component {
         return (
             <div>
                 <h4><i>Search Results for: {this.props.searchQuery}</i></h4>
-                <div style={{"flex": "2", "height": "750px", "overflow-y": "scroll"}}>
+                <div style={{"flex": "2", "height": "750px", "overflow-y": "auto"}}>
                     {restaurants && restaurants.map((restaurant) => (
                         <div className="card">
                             <div className="card-body">
