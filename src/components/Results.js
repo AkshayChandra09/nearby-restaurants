@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
+//Todo: Add pagination later
 export default class Results extends Component {
     constructor(props){
         super(props);
     }
 
     render() {
-        debugger;
         const restaurants = this.props.results;
 
         return (
@@ -16,8 +16,8 @@ export default class Results extends Component {
                     <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">{restaurant.name}</h5>
-                            <h6 className="card-subtitle mb-2 text-muted">{restaurant.rating}</h6>
-                            <p className="card-text">{restaurant.vicinity}</p>
+                            <h6 className="card-subtitle mb-2 text-muted">Ratings: {restaurant.rating}</h6>
+                            <p className="card-text">Address: {restaurant.vicinity}</p>
                         </div>
                     </div>
                 ))

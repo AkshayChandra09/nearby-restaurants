@@ -16,7 +16,7 @@ def find_places():
         'radius': 10000,
         'type': 'restaurant',
         'keyword': searchQuery,
-        'key': 'AIzaSyBUtF9jRjxRyS0TBUHSSj3mK3uufw2a9a4'
+        'key': API_KEY
     }
     response = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json", params=parameters)
     data = response.json()['results'] if response.status_code == 200 else 'No restaurants matching this criteria!'

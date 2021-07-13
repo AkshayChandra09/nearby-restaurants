@@ -29,46 +29,26 @@ export default class Search extends Component {
             headers: {'Access-Control-Allow-Origin': '*'}
         };
 
-        var location='32.87375746034482,-96.93187025983217';
+        const location='32.87375746034482,-96.93187025983217';
 
         fetch('http://127.0.0.1:5000/places?location='+location+'&search='+this.state.searchQuery, {mode: 'cors'})
         .then(res => res.json())
         .then(
             (result) => {
-                debugger;
                 this.setState({results: result});
                 this.props.getResults(this.state.results);
-                console.log(result)
             },
             (error) => {
-                debugger;
                 console.log(error);
             }
         )
     }
 
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     this.setState({searchQuery: e.target.value});
-    //     this.props.onSearch(this.state.searchQuery);
-    //     fetch('http://127.0.0.1:5000/get_restaurants?search='+this.state.searchQuery)
-    //     .then(res => res.json())
-    //     .then(
-    //         (result) => {
-    //             this.props.getResults(this.state.results);
-    //         },
-    //         (error) => {
-    //             debugger;
-    //             console.log(error);
-    //         }
-    //     )
-    // }
-
     render() {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" className="col-md-8" name="searchQuery" placeholder="Restaurant Name" value={this.state.searchQuery} onChange={this.handleChange} />
+                    <input type="text" className="col-md-8" name="searchQuery" placeholder="Restaurant Name Or Cuisine" value={this.state.searchQuery} onChange={this.handleChange} />
                     <button type="submit" disabled={!this.state.searchQuery}>Search</button>
                 </form>
             </div>
