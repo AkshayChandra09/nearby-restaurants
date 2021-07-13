@@ -1,26 +1,17 @@
 import React from 'react';
 import Search from './components/Search';
 import Results from './components/Results';
-import SimpleMap from './components/SimpleMap';
 import MapContainer from './components/MapContainer';
-
-import Geocode from "react-geocode";
-Geocode.setApiKey("AIzaSyD6z2UZv8AUvUvzIZV1USPRoyZf6zKVzw4");
-Geocode.setLanguage("en");
-Geocode.setRegion("us");
-Geocode.setLocationType("RESTAURANT");
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.tempMarkers=[];
   }
 
   state = {
     searchQuery: '',
-    restaurants: [],
-    markers: []
+    restaurants: []
   }
 
 
@@ -30,39 +21,7 @@ class App extends React.Component {
 
   getResults = (data) => {
     this.setState({restaurants:data['restaurants']});
-    // this.getCoordinates();
-    // debugger;
-    // this.setState({markers: this.tempMarkers});
   }
-
- /* getCoordinates = () => {
-    debugger
-    var restaurants = this.state.restaurants
-    if(restaurants != 'undefined'){
-      if(restaurants.length > 0){
-        restaurants.map(function(restaurant){
-          Geocode.fromAddress(restaurant.vicinity).then(
-            (response) => {
-              const { lat, lng } = response.results[0].geometry.location;
-              let new_obj = {
-                name: restaurant.name,
-                coordinates: {
-                  lat: lat,
-                  lng: lng
-                }
-              };
-              this.tempMarkers.push(new_obj);
-            },
-            (error) => {
-              console.error(error);
-            }
-          );
-        });
-      }
-    }
-    debugger;
-  }
-  */
 
   render() {
     return (
@@ -81,7 +40,9 @@ class App extends React.Component {
             }
           </div>
           <div className="col-md-6">
-              <MapContainer markers={this.state.restaurants} />
+            {this.state.markers !== 'undefined' ? 
+              <MapContainer markers={this.state.restaurants} /> : <h4></h4> 
+            }
           </div>
         </div>
       </div>
